@@ -9,4 +9,10 @@ class Actor < ApplicationRecord
   def self.average_age
     average(:age)
   end
+
+  # def actors_worked_with
+  #   require "pry"; binding.pry
+  #   actor = Actor.find(params[:id])
+  #
+  # end
 end
