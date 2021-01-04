@@ -58,5 +58,32 @@ describe Movie do
 
       expect(page).to have_content("Average Age: 50.0")
     end
+    it 'Shows a form for an actors name' do
+      studio_1 = Studio.create!(name: 'Fabulous Studio', location: 'Colorado')
+
+      movie_1 = studio_1.movies.create!(title: 'Hunger Games', creation_year: 2017, genre: 'Fiction')
+
+      actor_1 = Actor.create!(name: 'Leonardo di Caprio', age: 45)
+      actor_2 = Actor.create!(name: 'Tom Cruise', age: 55)
+      actor_3 = Actor.create!(name: 'Brad Pitt', age: 50)
+
+      ActorMovie.create!(actor_id: actor_1.id, movie_id: movie_1.id)
+      ActorMovie.create!(actor_id: actor_2.id, movie_id: movie_1.id)
+      ActorMovie.create!(actor_id: actor_3.id, movie_id: movie_1.id)
+
+      visit movie_path(movie_1)
+
+      expect(page).to have_field('name')
+      expect(page).to have_field('Search actor by name')
+
+      fill_in :name, with: actor_1.name
+
+      expect(page).to button('Search Actor')
+
+      click_on 'Search Actor'
+      
+      expect(current_path).to eq(movie_path(movie_1))
+      expect(page).to have_content(actor_1.name)
+    end
   end
 end
