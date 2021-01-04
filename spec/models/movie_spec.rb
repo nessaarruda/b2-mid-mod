@@ -1,4 +1,4 @@
-require 'rails-helper'
+require 'rails_helper'
 
 describe Movie do
   describe 'relationships' do
