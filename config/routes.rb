@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :studios do
-    resources :movies
+    resources :movies, only: [:index]
   end
 
-  resources :movies, :actors
+  resources :movies, only: [:show]
+  resources :actors, only: [:show]
 end
