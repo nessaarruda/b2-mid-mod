@@ -5,4 +5,6 @@ Rails.application.routes.draw do
 
   resources :movies, only: [:show]
   resources :actors, only: [:show]
+
+  get '/actor_movies', to: 'actor_movies#show'
 end

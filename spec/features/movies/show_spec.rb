@@ -74,14 +74,13 @@ describe Movie do
       visit movie_path(movie_1)
 
       expect(page).to have_field('name')
-      expect(page).to have_field('Search actor by name')
 
       fill_in :name, with: actor_1.name
 
-      expect(page).to button('Search Actor')
+      expect(page).to have_button('Search actor by name')
 
-      click_on 'Search Actor'
-      
+      click_on 'Search actor by name'
+
       expect(current_path).to eq(movie_path(movie_1))
       expect(page).to have_content(actor_1.name)
     end
