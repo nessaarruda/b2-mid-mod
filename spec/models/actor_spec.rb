@@ -36,7 +36,7 @@ describe Actor do
       ActorMovie.create!(actor_id: actor_2.id, movie_id: movie_1.id)
       ActorMovie.create!(actor_id: actor_3.id, movie_id: movie_1.id)
 
-      expect(movie_1.actors.average_age).to eq(50)
+      expect(movie_1.actors.average_age).to eq(50.0)
     end
   end
 end
