@@ -2,4 +2,7 @@
 <h2> Creation Year: <%= @movie.creation_year %> </h2>
 <h2> Genre: <%= @movie.genre %> </h2>
 <h3>All Actors: </h3>
-<h3<% @movie.actors.order_by_age %></h3>
+
+<% @movie.actors.order_by_age.each do |actor| %>
+<h3><%= actor.name %></h3>
+<% end %>

@@ -5,6 +5,6 @@
 <h2> Studio Name: <%= studio.name %> </h2>
 <h2>Studio Movies: </h2>
   <% studio.movies.each do |movie| %>
-  <h2> <%= movie.title %> </h2>
+  <h2> <%= link_to movie.title, movie_path(movie) %> </h2>
   <% end %>
 <% end %>
