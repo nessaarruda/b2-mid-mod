@@ -20,7 +20,7 @@ describe Actor do
       ActorMovie.create!(actor_id: actor_2.id, movie_id: movie_1.id)
       ActorMovie.create!(actor_id: actor_3.id, movie_id: movie_1.id)
 
-      expect(movie_1.actors.display_name).to eq([actor_1.name, actor_3.name, actor_2.name])
+      expect(movie_1.actors.order_by_age).to eq([actor_1, actor_3, actor_2])
     end
   end
 end
